@@ -33,9 +33,12 @@ public class Ex5_6 {
 			
 		} while (balance>0);
 		
-		System.out.printf("您需要 %d 期(月)  才");
+		System.out.printf("您需要 %d 期(月)  才可還款完畢\n",count-1);
 		
-		//if (count>limit)
+		if (count>limit)
+			System.out.printf("超過期數 %d 請另選貸款額度\n",limit);
+		else
+			System.out.printf("本行願意承做，歡迎洽詢行員\n");
 	}
 
 }
