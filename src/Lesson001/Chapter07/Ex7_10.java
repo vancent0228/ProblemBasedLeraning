@@ -29,7 +29,7 @@ public class Ex7_10 {
 		//seek
 		low =0;high=49;mid=0;
 		flag=0;
-		while ((low=1)<high) {
+		while (low+1<high) {
 			mid=(low+high)/2;
 			if (value==a[mid][0]) {
 				flag=1;
