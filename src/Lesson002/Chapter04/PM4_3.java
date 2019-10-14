@@ -3,7 +3,7 @@ package Lesson002.Chapter04;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Ex4_5 {
+public class PM4_3 {
 	static int course[][] = new int[50][7];
 	static String name[] = { "學號", "國文", "英文", "數學", "理化", "自然", "平均" };
 	static int point;
@@ -16,7 +16,8 @@ public class Ex4_5 {
 		point = -1;
 		int location;
 		for (int i = 0; i < 10; i++) {
-			course[i][0] = 1 + ran.nextInt(50);
+			course[i][0] = (i + 1) * 2;
+			;
 			for (int j = 1; j <= 5; j++) {
 				course[i][j] = 30 + ran.nextInt(70);
 			}
@@ -34,20 +35,35 @@ public class Ex4_5 {
 					System.out.printf("陣列已滿無法插入!!\n");
 
 				} else {
+					int temp[] = new int[7];
 					point = point + 1;
 					System.out.printf("請輸入學生學號(2位數)=>");
-					course[point][0] = keyin.nextInt();
+					temp[0] = keyin.nextInt();
 					System.out.printf("請輸入國文成績=>");
-					course[point][1] = keyin.nextInt();
+					temp[1] = keyin.nextInt();
 					System.out.printf("請輸入英文成績=>");
-					course[point][2] = keyin.nextInt();
+					temp[2] = keyin.nextInt();
 					System.out.printf("請輸入數學成績=>");
-					course[point][3] = keyin.nextInt();
+					temp[3] = keyin.nextInt();
 					System.out.printf("請輸入理化成績=>");
-					course[point][4] = keyin.nextInt();
+					temp[4] = keyin.nextInt();
 					System.out.printf("請輸入自然成績=>");
-					course[point][5] = keyin.nextInt();
+					temp[5] = keyin.nextInt();
+
+					int k = point;
+					while (true) {
+						if (k == 0) {
+							break;
+						} else if (course[k - 1][0] > temp[0]) {
+							course[k] = course[k - 1];
+							k = k - 1;
+						} else {
+							break;
+						}
+					}
+					course[k] = temp;
 				}
+
 				System.out.printf("\n目前學生人數為 %d\n", point);
 				break;
 			case 3:
@@ -117,22 +133,22 @@ public class Ex4_5 {
 
 	private static void buffer_sort() {
 		int temp[] = new int[7];
-		for (int i = 0; i <=point; i++) {
+		for (int i = 0; i <= point; i++) {
 			for (int j = i; j <= point; j++) {
-				if (course[i][6]<course[j][6]) {
-					temp=course[i];
-					course[i]=course[j];
-					course[j]=temp;
+				if (course[i][6] < course[j][6]) {
+					temp = course[i];
+					course[i] = course[j];
+					course[j] = temp;
 				}
 			}
-			
+
 		}
 
 	}
 
 	private static int Line_serach(int value) {
 		int location = -1;
-		for (int j = 0; j <=point; j++) {
+		for (int j = 0; j <= point; j++) {
 			if (value == course[j][0]) {
 				location = j;
 				break;
