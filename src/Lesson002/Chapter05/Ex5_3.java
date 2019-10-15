@@ -34,7 +34,19 @@ public class Ex5_3 {
 			}
 			
 			//==
-			
+			System.out.printf("\n\n**印出員工薪資表**\n");
+			System.out.printf("員工資料\t\t薪資總額\t預扣稅額\t應領薪資\n");
+			for (int i=0;i<k;i++) {
+				System.out.printf("%s",worker[i].name);
+				System.out.printf("(%d",worker[i].ID);
+				System.out.printf("%s)",worker[i].depart);
+				value=worker[i].payment+worker[i].duty;
+				System.out.printf("  %d\t\t",value);
+				tax=(int)(value*0.1);
+				System.out.printf("%d\t\t",tax);
+				value=value-tax;
+				System.out.printf("%d\n",value);
+			}
 		} while (true);
 		
 	}
